@@ -1,0 +1,201 @@
+openapi: 3.1.0
+info:
+  title: Tano Public Brand Signups Discovery API
+  version: 1.0.0
+  summary: Public HTTP API for Tano — the AI-native influencer marketing agency.
+  description: 'Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).
+
+
+    This OpenAPI document describes the public-facing HTTP endpoints available on https://tano.ai. These endpoints are unauthenticated form-submission endpoints intended for marketing site signups, contact requests, content-gate signups (e.g., playbook downloads), creator onboarding, and webinar registrations.
+
+
+    There is no authenticated/programmatic API for managing live creator campaigns — campaign management is delivered as a managed service via a dedicated account manager. To build a campaign integration, contact team@tano.ai or book a call at https://tano.ai.
+
+
+    All endpoints accept and return JSON, and CORS is enabled for browser-based and agent-driven submissions.'
+  contact:
+    name: Tano
+    url: https://tano.ai
+    email: team@tano.ai
+  license:
+    name: Proprietary
+    url: https://tano.ai/privacy-policy
+  termsOfService: https://tano.ai/privacy-policy
+servers:
+- url: https://tano.ai
+  description: Production
+tags:
+- name: Discovery
+  description: Static discovery files for AI agents (llms.txt, manifests, sitemap).
+paths:
+  /llms.txt:
+    get:
+      tags:
+      - Discovery
+      summary: Product overview for LLMs
+      description: Plain-text product summary, services, pricing, proof points, and key links — formatted for consumption by LLMs and AI agents.
+      operationId: getLlmsTxt
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain: {}
+  /llms-full.txt:
+    get:
+      tags:
+      - Discovery
+      summary: Full product documentation for LLMs
+      description: Comprehensive plain-text documentation including pricing, services, how-it-works, playbooks, and contact info.
+      operationId: getLlmsFullTxt
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain: {}
+  /pricing.md:
+    get:
+      tags:
+      - Discovery
+      summary: Pricing details (Markdown)
+      description: Detailed pricing tables for Creator Partnership Ads, Product Gifting, and Affiliate Programme Management.
+      operationId: getPricingMd
+      responses:
+        '200':
+          description: OK
+          content:
+            text/markdown: {}
+  /.well-known/agent-card.json:
+    get:
+      tags:
+      - Discovery
+      summary: A2A agent card
+      operationId: getAgentCard
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /.well-known/agent-skills/index.json:
+    get:
+      tags:
+      - Discovery
+      summary: Agent skills with when-to-use guidance
+      operationId: getAgentSkills
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /.well-known/mcp/manifest.json:
+    get:
+      tags:
+      - Discovery
+      summary: MCP manifest
+      operationId: getMcpManifest
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json: {}
+  /agents.md:
+    get:
+      tags:
+      - Discovery
+      summary: Agent integration & authentication guide
+      description: Step-by-step guide for AI agents on how to discover, authenticate (where applicable), and call Tano endpoints.
+      operationId: getAgentsMd
+      responses:
+        '200':
+          description: OK
+          content:
+            text/markdown: {}
+  /api/mcp:
+    get:
+      tags:
+      - Discovery
+      summary: Tano MCP server (Streamable HTTP) descriptor
+      description: Returns a small JSON descriptor for the Tano MCP server (transport, supported protocol versions, and serverInfo). Use POST with a JSON-RPC 2.0 envelope to start an MCP session.
+      operationId: getMcpDescriptor
+      responses:
+        '200':
+          description: MCP server descriptor
+          content:
+            application/json: {}
+    post:
+      tags:
+      - Discovery
+      summary: Tano MCP server (Streamable HTTP) JSON-RPC endpoint
+      description: Model Context Protocol server using Streamable HTTP transport. Accepts JSON-RPC 2.0 requests for `initialize`, `tools/list`, `tools/call`, `resources/list`, `resources/read`, `prompts/list`, and `ping`. No authentication required.
+      operationId: callMcp
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - jsonrpc
+              - method
+              properties:
+                jsonrpc:
+                  type: string
+                  enum:
+                  - '2.0'
+                id:
+                  oneOf:
+                  - type: string
+                  - type: integer
+                  - type: 'null'
+                method:
+                  type: string
+                params:
+                  type: object
+            examples:
+              initialize:
+                summary: MCP handshake
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: initialize
+                  params:
+                    protocolVersion: '2025-03-26'
+                    capabilities: {}
+                    clientInfo:
+                      name: ExampleClient
+                      version: 1.0.0
+              tools_list:
+                summary: List MCP tools
+                value:
+                  jsonrpc: '2.0'
+                  id: 2
+                  method: tools/list
+              get_pricing:
+                summary: Call get_pricing tool
+                value:
+                  jsonrpc: '2.0'
+                  id: 3
+                  method: tools/call
+                  params:
+                    name: get_pricing
+                    arguments:
+                      tier: micro
+                      creators: 30
+      responses:
+        '200':
+          description: JSON-RPC 2.0 response
+          content:
+            application/json: {}
+        '202':
+          description: Notification accepted (no response body)
+externalDocs:
+  description: Tano product documentation for AI agents (llms-full.txt)
+  url: https://tano.ai/llms-full.txt
+x-agent-instructions:
+  primary_use_cases:
+  - Submit a brand enquiry on behalf of a user via /api/contact.
+  - Sign up for a downloadable playbook via /api/caf-signup, /api/cdg-signup, or /api/cpa-signup.
+  - Discover Tano's services, pricing, and proof points via /llms.txt and /llms-full.txt.
+  - Resolve agent integration questions via /agents.md (auth guide for AI agents).
+  auth: All endpoints documented here are unauthenticated public endpoints. There is no API key or OAuth flow. See /agents.md for the full agent authentication policy.
+  rate_limits: No documented rate limits, but agents should retry 5xx with exponential backoff and avoid duplicate submissions for the same email.
+  contact: For programmatic/managed-service integrations beyond these public endpoints, contact team@tano.ai.

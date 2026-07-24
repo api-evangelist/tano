@@ -1,0 +1,220 @@
+openapi: 3.1.0
+info:
+  title: Tano Public Brand Signups API
+  version: 1.0.0
+  summary: Public HTTP API for Tano — the AI-native influencer marketing agency.
+  description: 'Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).
+
+
+    This OpenAPI document describes the public-facing HTTP endpoints available on https://tano.ai. These endpoints are unauthenticated form-submission endpoints intended for marketing site signups, contact requests, content-gate signups (e.g., playbook downloads), creator onboarding, and webinar registrations.
+
+
+    There is no authenticated/programmatic API for managing live creator campaigns — campaign management is delivered as a managed service via a dedicated account manager. To build a campaign integration, contact team@tano.ai or book a call at https://tano.ai.
+
+
+    All endpoints accept and return JSON, and CORS is enabled for browser-based and agent-driven submissions.'
+  contact:
+    name: Tano
+    url: https://tano.ai
+    email: team@tano.ai
+  license:
+    name: Proprietary
+    url: https://tano.ai/privacy-policy
+  termsOfService: https://tano.ai/privacy-policy
+servers:
+- url: https://tano.ai
+  description: Production
+tags:
+- name: Brand Signups
+  description: Brand signups for product offerings (Creator Partnership Ads, Content Analysis Framework, Creator Discovery Guide, USA waitlist).
+paths:
+  /api/cpa-signup:
+    post:
+      tags:
+      - Brand Signups
+      summary: Sign up for Creator Partnership Ads (CPA)
+      description: Register interest in Tano's Creator Partnership Ads service. Requires a work (non-personal) email.
+      operationId: cpaSignup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkEmailSignupRequest'
+      responses:
+        '200':
+          description: Signup recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/caf-signup:
+    post:
+      tags:
+      - Brand Signups
+      summary: Sign up for the Content Analysis Framework (CAF)
+      description: Register interest in / download Tano's Content Analysis Framework. Requires a work (non-personal) email.
+      operationId: cafSignup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkEmailSignupRequest'
+      responses:
+        '200':
+          description: Signup recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/cdg-signup:
+    post:
+      tags:
+      - Brand Signups
+      summary: Sign up for the Creator Discovery Guide (CDG)
+      description: Register interest in / download Tano's Creator Discovery Guide. Requires a work (non-personal) email.
+      operationId: cdgSignup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkEmailSignupRequest'
+      responses:
+        '200':
+          description: Signup recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /api/usa-signup:
+    post:
+      tags:
+      - Brand Signups
+      summary: USA waitlist / signup
+      description: Sign up for the Tano USA program waitlist.
+      operationId: usaSignup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsaSignupRequest'
+      responses:
+        '200':
+          description: Signup recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  schemas:
+    SignupResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
+          type: string
+    UsaSignupRequest:
+      type: object
+      required:
+      - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        gifted_or_allowlisted:
+          type: string
+          description: Whether the brand has run gifted or allowlisted creator campaigns.
+        already_working_with_influencers:
+          type: boolean
+          description: Whether the brand is already running influencer programs.
+    WorkEmailSignupRequest:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          format: email
+          description: Work email address. Personal-domain emails (gmail.com, yahoo.com, etc.) are rejected.
+        phoneNumber:
+          type: string
+    Error:
+      type: object
+      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
+      properties:
+        error:
+          type: string
+          description: Short error code or message.
+        code:
+          type: string
+          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
+        message:
+          type: string
+          description: Human-readable error message with resolution hints.
+        documentation:
+          type: string
+          format: uri
+          description: Link to documentation that explains how to fix the error.
+  responses:
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+externalDocs:
+  description: Tano product documentation for AI agents (llms-full.txt)
+  url: https://tano.ai/llms-full.txt
+x-agent-instructions:
+  primary_use_cases:
+  - Submit a brand enquiry on behalf of a user via /api/contact.
+  - Sign up for a downloadable playbook via /api/caf-signup, /api/cdg-signup, or /api/cpa-signup.
+  - Discover Tano's services, pricing, and proof points via /llms.txt and /llms-full.txt.
+  - Resolve agent integration questions via /agents.md (auth guide for AI agents).
+  auth: All endpoints documented here are unauthenticated public endpoints. There is no API key or OAuth flow. See /agents.md for the full agent authentication policy.
+  rate_limits: No documented rate limits, but agents should retry 5xx with exponential backoff and avoid duplicate submissions for the same email.
+  contact: For programmatic/managed-service integrations beyond these public endpoints, contact team@tano.ai.
