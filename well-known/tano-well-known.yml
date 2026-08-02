@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: searched
+host: https://tano.ai
+documents:
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: tano-agent-card.json
+    note: A2A agent capability card
+  - path: /.well-known/agent-skills/index.json
+    status: 200
+    file: tano-agent-skills-index.json
+    note: Agent skills index with when-to-use guidance
+  - path: /.well-known/mcp/manifest.json
+    status: 200
+    file: tano-mcp-manifest.json
+    note: MCP manifest (server + ui:// resources + tools, MCP Apps)
+  - path: /ai-plugin.json
+    status: 200
+    file: tano-ai-plugin.json
+    note: OpenAI plugin manifest (served at site root, not under /.well-known/)
+  - path: /.well-known/security.txt
+    status: 404
+    note: Soft 404 - returns SPA homepage HTML, not an RFC 9116 security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+    note: Soft 404 - returns SPA homepage HTML; no OIDC discovery
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    note: Soft 404 - returns SPA homepage HTML; no OAuth AS metadata
+  - path: /.well-known/api-catalog
+    status: 404
+    note: Soft 404 - returns SPA homepage HTML; no RFC 9727 api-catalog

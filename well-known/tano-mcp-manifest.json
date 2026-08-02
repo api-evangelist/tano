@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0",
+  "name": "Tano",
+  "description": "AI-native influencer marketing agency — creator sourcing, partnership ads, gifting, and affiliate management on TikTok and Instagram. Supports MCP Apps with embeddable UIs for pricing, service catalogue, case studies, and contact intake.",
+  "url": "https://tano.ai",
+  "provider": {
+    "name": "Tano",
+    "url": "https://tano.ai"
+  },
+  "server": {
+    "transport": "streamable-http",
+    "url": "https://tano.ai/api/mcp",
+    "protocolVersion": "2025-03-26",
+    "auth": "none"
+  },
+  "endpoints": {
+    "streamable_http": "https://tano.ai/api/mcp",
+    "sse": "https://tano.ai/api/mcp"
+  },
+  "capabilities": {
+    "resources": true,
+    "tools": true,
+    "prompts": false,
+    "ui": true,
+    "apps": true
+  },
+  "extensions": {
+    "apps": {
+      "spec": "https://modelcontextprotocol.io/specification/server/apps",
+      "package": "@modelcontextprotocol/ext-apps",
+      "description": "MCP Apps — exposes ui:// resources and tools annotated with _meta.ui.resourceUri so agents can render Tano's pricing calculator, service catalogue, and contact form inline in conversation."
+    }
+  },
+  "resources": [
+    {
+      "uri": "https://tano.ai/llms.txt",
+      "name": "Product Overview",
+      "description": "Summary of Tano's services, pricing, and capabilities.",
+      "mimeType": "text/plain"
+    },
+    {
+      "uri": "https://tano.ai/llms-full.txt",
+      "name": "Full Documentation",
+      "description": "Comprehensive product documentation including pricing details, service descriptions, and guides.",
+      "mimeType": "text/plain"
+    },
+    {
+      "uri": "https://tano.ai/pricing.md",
+      "name": "Pricing",
+      "description": "Detailed pricing information for all Tano services.",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "https://tano.ai/openapi.json",
+      "name": "OpenAPI Specification",
+      "description": "OpenAPI 3.1 specification for Tano's public HTTP API (contact, signups, webinars).",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "https://tano.ai/agents.md",
+      "name": "Agent Authentication Guide",
+      "description": "Step-by-step guide for AI agents on authenticating against and calling Tano's public endpoints.",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "ui://tano/pricing-calculator",
+      "name": "Pricing Calculator (UI)",
+      "description": "Interactive HTML widget that lets a brand estimate Tano costs by selecting follower tier, creator count, and platform. Renders inline via MCP Apps.",
+      "mimeType": "text/html",
+      "_meta": {
+        "ui": {
+          "url": "https://tano.ai/ui/pricing-calculator.html",
+          "preferredSize": { "width": 720, "height": 640 }
+        }
+      }
+    },
+    {
+      "uri": "ui://tano/services",
+      "name": "Services Catalogue (UI)",
+      "description": "Interactive card view of Tano's services — Creator Partnership Ads, Product Gifting, Affiliate Programme Management, Creator Sourcing.",
+      "mimeType": "text/html",
+      "_meta": {
+        "ui": {
+          "url": "https://tano.ai/ui/services.html",
+          "preferredSize": { "width": 720, "height": 560 }
+        }
+      }
+    },
+    {
+      "uri": "ui://tano/contact-form",
+      "name": "Contact Form (UI)",
+      "description": "Embedded contact form that posts to /api/contact and lets a user introduce their brand to Tano without leaving the agent conversation.",
+      "mimeType": "text/html",
+      "_meta": {
+        "ui": {
+          "url": "https://tano.ai/ui/contact-form.html",
+          "preferredSize": { "width": 560, "height": 600 }
+        }
+      }
+    },
+    {
+      "uri": "ui://tano/case-studies",
+      "name": "Case Studies (UI)",
+      "description": "Embedded case-study browser featuring Skin+Me, Bloom & Wild, Gousto, and other Tano brand partners.",
+      "mimeType": "text/html",
+      "_meta": {
+        "ui": {
+          "url": "https://tano.ai/ui/case-studies.html",
+          "preferredSize": { "width": 720, "height": 600 }
+        }
+      }
+    }
+  ],
+  "tools": [
+    {
+      "name": "get_pricing",
+      "title": "Get Tano pricing estimate",
+      "description": "Compute an estimated cost range for a Tano Creator Partnership Ads campaign given a follower tier and creator count. Returns the Tano service fee range, creator payment range, total per creator, and total for the campaign.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tier": {
+            "type": "string",
+            "enum": ["nano", "micro", "mid", "macro"],
+            "description": "Follower tier of the creators."
+          },
+          "creators": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of creators in the campaign."
+          }
+        },
+        "required": ["tier"]
+      }
+    },
+    {
+      "name": "list_services",
+      "title": "List Tano services",
+      "description": "Returns the catalogue of Tano services (Creator Partnership Ads, Product Gifting, Affiliate Programme Management, Creator Sourcing) with descriptions and pricing.",
+      "inputSchema": { "type": "object", "properties": {} }
+    },
+    {
+      "name": "show_pricing_calculator",
+      "title": "Show Tano pricing calculator",
+      "description": "Render Tano's interactive pricing calculator inline so the user can estimate creator partnership ad costs by follower tier, creator count, and platform.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "tier": {
+            "type": "string",
+            "enum": ["nano", "micro", "mid", "macro"],
+            "description": "Pre-selected follower tier."
+          },
+          "creators": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Pre-filled creator count."
+          },
+          "platform": {
+            "type": "string",
+            "enum": ["tiktok", "instagram", "both"],
+            "description": "Pre-selected platform."
+          }
+        }
+      },
+      "_meta": {
+        "ui": {
+          "resourceUri": "ui://tano/pricing-calculator",
+          "preferredSize": { "width": 720, "height": 640 }
+        }
+      }
+    },
+    {
+      "name": "show_services",
+      "title": "Show Tano services catalogue",
+      "description": "Render Tano's services catalogue (Creator Partnership Ads, Product Gifting, Affiliate Management, Creator Sourcing) as an interactive UI.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      },
+      "_meta": {
+        "ui": {
+          "resourceUri": "ui://tano/services",
+          "preferredSize": { "width": 720, "height": 560 }
+        }
+      }
+    },
+    {
+      "name": "show_contact_form",
+      "title": "Show Tano contact form",
+      "description": "Render an embeddable contact form so the user can introduce their brand to Tano. Posts to https://tano.ai/api/contact.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "userType": {
+            "type": "string",
+            "enum": ["brand", "creator", "agency", "other"],
+            "description": "Pre-fill the userType field."
+          },
+          "message": {
+            "type": "string",
+            "description": "Pre-fill the message field with a draft on behalf of the user."
+          }
+        }
+      },
+      "_meta": {
+        "ui": {
+          "resourceUri": "ui://tano/contact-form",
+          "preferredSize": { "width": 560, "height": 600 }
+        }
+      }
+    },
+    {
+      "name": "show_case_studies",
+      "title": "Show Tano case studies",
+      "description": "Render an interactive case-studies browser with results from Skin+Me, Bloom & Wild, Gousto, and other Tano partners.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "string",
+            "description": "Optional brand to focus on (e.g., 'skin+me', 'bloom & wild')."
+          }
+        }
+      },
+      "_meta": {
+        "ui": {
+          "resourceUri": "ui://tano/case-studies",
+          "preferredSize": { "width": 720, "height": 600 }
+        }
+      }
+    }
+  ]
+}

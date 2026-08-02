@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Tano Public API
+  version: 1.0.0
+extends: openapi/tano-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: tano
+      x-apievangelist-category: influencer-marketing
+      x-apievangelist-agent-native: true
+      x-apievangelist-notes: >-
+        Public unauthenticated marketing-intake API. Agent-native surface: published MCP
+        server (Streamable HTTP + MCP Apps), A2A agent-card, agent-skills index, ai-plugin,
+        llms.txt/llms-full.txt, and agents.md. No live-campaign management API - that is a
+        managed service via a dedicated account manager.
+  - target: $.info
+    update:
+      x-apievangelist-discovery:
+        mcp_server: https://tano.ai/api/mcp
+        agent_card: https://tano.ai/.well-known/agent-card.json
+        agent_skills: https://tano.ai/.well-known/agent-skills/index.json
+        llms_txt: https://tano.ai/llms.txt
+        developers: https://tano.ai/developers.md
+        agents: https://tano.ai/agents.md

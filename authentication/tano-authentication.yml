@@ -1,0 +1,15 @@
+generated: '2026-07-21'
+method: searched
+source: https://tano.ai/agents.md
+docs: https://tano.ai/agents.md
+summary:
+  types: [none]
+  model: public-unauthenticated
+  note: >-
+    Tano's public HTTP API (contact, signups, webinar registration) requires no API key
+    and no OAuth flow - all documented endpoints are open, CORS-enabled JSON endpoints.
+    The OpenAPI declares no securitySchemes. Programmatic management of live creator
+    campaigns is not exposed as a public API; it is delivered as a managed service via a
+    dedicated account manager. Scoped keys for managed-service integrations are issued
+    out of band on request (team@tano.ai).
+schemes: []

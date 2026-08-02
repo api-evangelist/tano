@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Tano",
+  "name_for_model": "tano",
+  "description_for_human": "The world's first AI-native influencer partner. Scale creator partnership ads without scaling headcount.",
+  "description_for_model": "Tano is an AI-native influencer partner that manages end-to-end creator partnership campaigns on TikTok and Instagram. Services include creator sourcing, content production, contract management, whitelisting permissions, product gifting, and affiliate programme management. Use this plugin to get information about Tano's services, pricing, and case studies.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://tano.ai/llms-full.txt"
+  },
+  "logo_url": "https://tano.ai/tano-og-image.png",
+  "contact_email": "team@tano.ai",
+  "legal_info_url": "https://tano.ai/privacy-policy"
+}

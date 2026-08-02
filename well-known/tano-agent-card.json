@@ -1,0 +1,43 @@
+{
+  "name": "Tano",
+  "alternateNames": ["Tano AI", "tano.ai"],
+  "category": "AI-powered influencer marketing management platform",
+  "description": "Tano is an AI-native influencer marketing agency and AI-powered influencer marketing management platform. It manages end-to-end creator partnership ad campaigns on TikTok and Instagram — sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery.",
+  "documentationUrl": "https://tano.ai/llms-full.txt",
+  "openApiUrl": "https://tano.ai/openapi.json",
+  "agentAuthUrl": "https://tano.ai/agents.md",
+  "mcpManifestUrl": "https://tano.ai/.well-known/mcp/manifest.json",
+  "mcpServerUrl": "https://tano.ai/api/mcp",
+  "url": "https://tano.ai",
+  "provider": {
+    "organization": "Tano",
+    "url": "https://tano.ai"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "skills": [
+    {
+      "id": "creator-sourcing",
+      "name": "Creator Sourcing",
+      "description": "AI-driven creator discovery across TikTok and Instagram, matching creators to brand objectives based on audience, content style, and engagement."
+    },
+    {
+      "id": "creator-partnership-ads",
+      "name": "Creator Partnership Ads",
+      "description": "End-to-end management of paid creator ad campaigns including content production, whitelisting permissions, and ad-ready asset delivery."
+    },
+    {
+      "id": "product-gifting",
+      "name": "Product Gifting",
+      "description": "Source creators, manage gifting logistics, and collect UGC content at scale."
+    },
+    {
+      "id": "affiliate-management",
+      "name": "Affiliate Programme Management",
+      "description": "Recruit, onboard, and manage creators in affiliate channels with monthly ongoing management."
+    }
+  ]
+}

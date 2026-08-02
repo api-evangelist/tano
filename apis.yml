@@ -14,7 +14,49 @@ created: '2026-07-17'
 modified: '2026-07-17'
 tags:
 - Company
-apis: []
+apis:
+- aid: tano:tano-brand-signups-api
+  name: Tano Brand Signups API
+  description: >-
+    Brand signups for product offerings (Creator Partnership Ads, Content Analysis Framework, Creator
+    Discovery Guide, USA waitlist).
+  tags:
+  - Brand Signups
+  properties:
+  - type: OpenAPI
+    url: openapi/tano-brand-signups-api-openapi.yml
+- aid: tano:tano-contact-api
+  name: Tano Contact API
+  description: Contact form submissions and updates.
+  tags:
+  - Contact
+  properties:
+  - type: OpenAPI
+    url: openapi/tano-contact-api-openapi.yml
+- aid: tano:tano-creator-signups-api
+  name: Tano Creator Signups API
+  description: Creator-side signups.
+  tags:
+  - Creator Signups
+  properties:
+  - type: OpenAPI
+    url: openapi/tano-creator-signups-api-openapi.yml
+- aid: tano:tano-discovery-api
+  name: Tano Discovery API
+  description: Static discovery files for AI agents (llms.txt, manifests, sitemap).
+  tags:
+  - Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/tano-discovery-api-openapi.yml
+- aid: tano:tano-events-api
+  name: Tano Events API
+  description: Webinar and event registrations.
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/tano-events-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

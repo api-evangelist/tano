@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/tano-openapi-original.json
+note: >-
+  Tano's public API is a set of flat form-submission endpoints (marketing intake), so the
+  data model is a small set of independent lead/registration records keyed by email rather
+  than a relational graph. Live campaign entities (creators, contracts, payments,
+  whitelisting) are not exposed on the public API.
+entities:
+  - name: Contact
+    key: email
+    schemas: [ContactRequest, ContactResponse, ContactUpdateRequest, ContactUpdateResponse]
+    fields: [name, email, phoneNumber, userType, message, affiliatesPerMonth, usingInfluencers, influencersPerMonth, monthlyBudget, planOnUsingInfluencers, pricingTier, sourcePage, calculatorSummary]
+    operations: [submitContact, updateContact]
+    note: upsert-by-email; updateContact enriches an existing contact from the pricing calculator / onboarding.
+  - name: BrandSignup
+    key: email
+    schemas: [WorkEmailSignupRequest, UsaSignupRequest, SignupResponse]
+    fields: [email, phoneNumber, name, gifted_or_allowlisted, already_working_with_influencers]
+    operations: [cpaSignup, cafSignup, cdgSignup, usaSignup]
+    note: Work-email-gated product/playbook signups (Creator Partnership Ads, Content Analysis Framework, Creator Discovery Guide, USA waitlist).
+  - name: CreatorSignup
+    key: email
+    schemas: [CreatorSignupRequest, SignupResponse]
+    fields: [name, email, instagram, tiktok, youtube, x, whatsappNumber]
+    operations: [creatorSignup]
+  - name: WebinarRegistration
+    key: workEmail
+    schemas: [RunnaWebinarRequest, SignupResponse]
+    fields: [fullName, workEmail, questions]
+    operations: [runnaWebinarSignup]
+relationships: []

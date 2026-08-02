@@ -1,0 +1,22 @@
+{
+  "provider": "tano",
+  "sources": [
+    "tano-brand-signups-api-openapi.yml",
+    "tano-contact-api-openapi.yml",
+    "tano-creator-signups-api-openapi.yml",
+    "tano-discovery-api-openapi.yml",
+    "tano-events-api-openapi.yml"
+  ],
+  "outputs": [
+    "tano-brand-signups-api-openapi.yml",
+    "tano-contact-api-openapi.yml",
+    "tano-creator-signups-api-openapi.yml",
+    "tano-discovery-api-openapi.yml",
+    "tano-events-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

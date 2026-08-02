@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/tano-openapi-original.json
+versioning:
+  scheme: openapi-info-version
+  current: '1.0.0'
+  docs: https://tano.ai/openapi.json
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation policy or RFC 8594 Sunset/Deprecation header support found.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []
+notes: >-
+  Tano exposes a single versioned public API (1.0.0). No status page, SLA, or deprecation
+  policy is published; campaign lifecycle is handled via a managed-service account manager.

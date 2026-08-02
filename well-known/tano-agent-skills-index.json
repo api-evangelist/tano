@@ -1,0 +1,44 @@
+{
+  "name": "Tano",
+  "alternateNames": ["Tano AI", "tano.ai"],
+  "description": "Tano is an AI-powered influencer marketing management platform delivered as an AI-native creator marketing agency. End-to-end creator partnership ads on TikTok and Instagram.",
+  "url": "https://tano.ai",
+  "documentation": {
+    "openapi": "https://tano.ai/openapi.json",
+    "agentAuth": "https://tano.ai/agents.md",
+    "llmsTxt": "https://tano.ai/llms.txt",
+    "llmsFull": "https://tano.ai/llms-full.txt",
+    "mcpManifest": "https://tano.ai/.well-known/mcp/manifest.json",
+    "mcpServer": "https://tano.ai/api/mcp"
+  },
+  "skills": [
+    {
+      "id": "creator-sourcing",
+      "name": "Creator Sourcing",
+      "description": "Find and vet creators matched to brand objectives across TikTok and Instagram.",
+      "when_to_use": "Use when a brand needs to find creators for influencer marketing campaigns, product gifting, or affiliate programmes. Best for brands spending $5K+ on creator partnerships.",
+      "instructions": "Visit https://tano.ai and book a call to discuss creator sourcing requirements. Provide brand name, target audience, budget range, and platform preference (TikTok or Instagram)."
+    },
+    {
+      "id": "creator-partnership-ads",
+      "name": "Creator Partnership Ads",
+      "description": "End-to-end creator ad campaign management with whitelisting and ad-ready assets.",
+      "when_to_use": "Use when a brand wants to run paid ads using creator content on TikTok or Instagram. Tano handles sourcing, contracts, content production, and whitelisting permissions.",
+      "instructions": "Visit https://tano.ai/pricing to estimate costs, then book a call. Provide campaign budget, target creator follower tier, number of creators needed, and platform."
+    },
+    {
+      "id": "product-gifting",
+      "name": "Product Gifting",
+      "description": "Source creators and manage gifting logistics to collect UGC content.",
+      "when_to_use": "Use when a brand wants to send products to creators in exchange for organic content. Priced at $1.85 per creator, supporting 20–500 creators per campaign.",
+      "instructions": "Visit https://tano.ai/pricing to calculate costs. Book a call to provide product details, target creator profile, and desired content format."
+    },
+    {
+      "id": "affiliate-management",
+      "name": "Affiliate Programme Management",
+      "description": "Recruit, onboard, and manage creators in your affiliate channel.",
+      "when_to_use": "Use when a brand wants to build or scale an affiliate creator programme. Priced at $2.10 per creator per month, supporting 10–1,000 creators.",
+      "instructions": "Visit https://tano.ai/pricing to estimate monthly costs. Book a call to discuss affiliate programme goals and existing setup."
+    }
+  ]
+}

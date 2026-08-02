@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/tano-openapi-original.json
+format: custom-json-envelope
+envelope:
+  media_type: application/json
+  note: >-
+    All Tano endpoints return JSON for errors, never HTML. The error envelope carries
+    `error` (short code/message), `code` (machine-readable, e.g. API_ENDPOINT_NOT_FOUND,
+    INVALID_EMAIL), `message` (human-readable with resolution hints), and `documentation`
+    (a URI to the docs explaining how to fix the error).
+  fields:
+    - {name: error, type: string, description: Short error code or message}
+    - {name: code, type: string, description: Machine-readable error code}
+    - {name: message, type: string, description: Human-readable message with resolution hints}
+    - {name: documentation, type: uri, description: Link to documentation explaining the fix}
+problems:
+  - status: 400
+    code: INVALID_EMAIL
+    title: Bad request
+    description: Validation error - missing required field, invalid email, or a non-work (personal-domain) email where a work email is required.
+    source_operations: [submitContact, updateContact, cpaSignup, cafSignup, cdgSignup, usaSignup, creatorSignup, runnaWebinarSignup]
+  - status: 404
+    code: API_ENDPOINT_NOT_FOUND
+    title: Unknown API endpoint
+    description: Unknown API endpoint. Returned as JSON with a documentation link.
+  - status: 405
+    title: Method not allowed
+    description: HTTP method not supported for this endpoint. Returned as JSON.
+    source_operations: [submitContact, updateContact, cpaSignup, cafSignup, cdgSignup, usaSignup, creatorSignup, runnaWebinarSignup]
+  - status: 500
+    title: Server error
+    description: Server error. Retry with exponential backoff. Returned as JSON.
+    source_operations: [submitContact, updateContact, cpaSignup, cafSignup, cdgSignup, usaSignup, creatorSignup, runnaWebinarSignup]

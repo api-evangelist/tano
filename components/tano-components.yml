@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://tano.ai/.well-known/mcp/manifest.json
+kind: mcp-apps-embedded-ui
+loader:
+  spec: https://modelcontextprotocol.io/specification/server/apps
+  package: "@modelcontextprotocol/ext-apps"
+  note: >-
+    Tano ships embeddable HTML UI surfaces as MCP Apps - ui:// resources rendered inline in
+    an agent conversation via tools annotated with _meta.ui.resourceUri. These are hosted,
+    prebuilt widgets (not a client-side element library or server SDK).
+families:
+  - family: Pricing
+    components:
+      - uri: ui://tano/pricing-calculator
+        name: Pricing Calculator
+        url: https://tano.ai/ui/pricing-calculator.html
+        size: {width: 720, height: 640}
+        tool: show_pricing_calculator
+        description: Interactive widget to estimate Tano costs by follower tier, creator count, and platform.
+  - family: Catalogue
+    components:
+      - uri: ui://tano/services
+        name: Services Catalogue
+        url: https://tano.ai/ui/services.html
+        size: {width: 720, height: 560}
+        tool: show_services
+        description: Card view of Tano services - Creator Partnership Ads, Product Gifting, Affiliate Management, Creator Sourcing.
+  - family: Intake
+    components:
+      - uri: ui://tano/contact-form
+        name: Contact Form
+        url: https://tano.ai/ui/contact-form.html
+        size: {width: 560, height: 600}
+        tool: show_contact_form
+        description: Embedded contact form that posts to /api/contact.
+  - family: Proof
+    components:
+      - uri: ui://tano/case-studies
+        name: Case Studies Browser
+        url: https://tano.ai/ui/case-studies.html
+        size: {width: 720, height: 600}
+        tool: show_case_studies
+        description: Embedded case-study browser (Skin+Me, Bloom & Wild, Gousto, and other partners).

@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://tano.ai/agents.md
+docs: https://tano.ai/agents.md
+authentication:
+  style: none
+  detail: Public unauthenticated endpoints; no API key or OAuth. See authentication/tano-authentication.yml
+content:
+  request: application/json
+  response: application/json
+  cors: enabled
+  note: All endpoints accept and return JSON; CORS is open for browser- and agent-driven submissions.
+idempotency:
+  supported: false
+  guidance: >-
+    No Idempotency-Key header is documented. Agents should avoid duplicate submissions for
+    the same email; /api/contact-update performs an upsert-by-email (update or create).
+pagination:
+  supported: false
+  note: Endpoints are single-resource form submissions; no collection listing or pagination.
+versioning:
+  scheme: openapi-info-version
+  current: '1.0.0'
+error_envelope:
+  media_type: application/json
+  fields: [error, code, message, documentation]
+  ref: errors/tano-problem-types.yml
+rate_limiting:
+  documented: false
+  guidance: No documented rate limits; retry 5xx with exponential backoff.
+request_tracing:
+  request_id_header: null
+  note: No request-id/trace header documented.
+work_email_validation:
+  note: >-
+    Several signup endpoints (cpaSignup, cafSignup, cdgSignup, runnaWebinarSignup) reject
+    personal-domain emails (gmail.com, yahoo.com, ...) and require a work email.

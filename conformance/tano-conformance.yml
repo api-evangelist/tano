@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/tano-openapi-original.json
+standards:
+  - id: openapi-3.1
+    conforms: true
+    evidence: openapi field is 3.1.0 with typed schemas, tags, and examples
+  - id: model-context-protocol
+    conforms: true
+    evidence: published MCP server (Streamable HTTP, protocolVersion 2025-03-26) with tools + resources + MCP Apps
+  - id: mcp-apps
+    conforms: true
+    evidence: ui:// resources with _meta.ui.resourceUri and @modelcontextprotocol/ext-apps extension declared in the MCP manifest
+  - id: a2a-agent-card
+    conforms: true
+    evidence: /.well-known/agent-card.json publishes an A2A capability card
+  - id: llms-txt
+    conforms: true
+    evidence: /llms.txt and /llms-full.txt published
+  - id: openai-plugin-manifest
+    conforms: true
+    evidence: /ai-plugin.json published
+  - id: cors
+    conforms: true
+    evidence: CORS enabled on all public endpoints per OpenAPI description and agents.md
+  - id: oauth2
+    conforms: false
+    evidence: no securitySchemes; API is unauthenticated public
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: errors use a custom JSON envelope (error/code/message/documentation), not application/problem+json
+  - id: webhooks
+    conforms: false
+    evidence: llms.txt states Tano does not emit outbound webhooks

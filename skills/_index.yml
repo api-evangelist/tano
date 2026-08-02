@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/tano-openapi-original.json
+note: >-
+  Skills grounded in real operationIds from the Tano OpenAPI. Tano also publishes its own
+  agent guidance verbatim: skills/tano-agents.md (agent integration & auth guide) and
+  well-known/tano-agent-skills-index.json (provider-published skills with when-to-use guidance).
+skills:
+  - file: tano-submit-brand-enquiry.md
+    name: Submit a brand enquiry to Tano
+    api: openapi/tano-openapi-original.json
+    operations: [submitContact, updateContact]
+  - file: tano-playbook-signup.md
+    name: Sign up for a Tano playbook or product
+    api: openapi/tano-openapi-original.json
+    operations: [cpaSignup, cafSignup, cdgSignup, usaSignup]
+provider_published:
+  - file: tano-agents.md
+    source: https://tano.ai/agents.md
+    method: searched
+  - file: ../well-known/tano-agent-skills-index.json
+    source: https://tano.ai/.well-known/agent-skills/index.json
+    method: searched
