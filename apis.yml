@@ -63,6 +63,12 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgentSkill
+  url: skills/tano-agents.md
+- type: MCPServer
+  url: mcp/tano-mcp.yml
+- type: Overlay
+  url: overlays/tano-openapi-overlay.yaml
 - type: AgentCard
   url: a2a/tano-a2a.yml
   name: A2A Agent Card
