@@ -1,0 +1,932 @@
+{
+  "item": [
+    {
+      "id": "187f64dc-8b75-4653-b1d6-c0d5ed7eb666",
+      "name": "Brand Signups",
+      "description": {
+        "content": "Brand signups for product offerings (Creator Partnership Ads, Content Analysis Framework, Creator Discovery Guide, USA waitlist).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e328301d-48e6-488f-8644-32001bab6bc0",
+          "name": "Sign up for Creator Partnership Ads (CPA)",
+          "request": {
+            "name": "Sign up for Creator Partnership Ads (CPA)",
+            "description": {
+              "content": "Register interest in Tano's Creator Partnership Ads service. Requires a work (non-personal) email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "cpa-signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4cdfa817-8b9b-4831-a5fc-acc64fee37c6",
+              "name": "Signup recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cpa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\",\n  \"recordId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f73bc37-2812-4607-b4e4-ce0e9804a245",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cpa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28207185-e1ff-49ac-a1f7-53c6d0ad9829",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cpa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "739ed8ff-5671-4301-a63c-ce2256c03587",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cpa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81ef2122-1901-4b1c-932d-e082e6267b58",
+          "name": "Sign up for the Content Analysis Framework (CAF)",
+          "request": {
+            "name": "Sign up for the Content Analysis Framework (CAF)",
+            "description": {
+              "content": "Register interest in / download Tano's Content Analysis Framework. Requires a work (non-personal) email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "caf-signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bc466c4-1ee6-42c6-b91f-a9a439a0c2d4",
+              "name": "Signup recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "caf-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\",\n  \"recordId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aff5cd05-2ff0-419e-802e-5b7ae8383318",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "caf-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b1f4bb6-c521-466f-bcf5-581d22c93984",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "caf-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "032b691f-72a2-4ca5-9fad-6979bf807cf6",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "caf-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65dbfe5a-d8bb-4d13-8bce-2c74d431dc00",
+          "name": "Sign up for the Creator Discovery Guide (CDG)",
+          "request": {
+            "name": "Sign up for the Creator Discovery Guide (CDG)",
+            "description": {
+              "content": "Register interest in / download Tano's Creator Discovery Guide. Requires a work (non-personal) email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "cdg-signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "678adced-0b2c-4907-a9b2-437f0d42ea14",
+              "name": "Signup recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cdg-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\",\n  \"recordId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8678942-3c51-47be-9e8e-17cfd5c1d21a",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cdg-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8efab313-f2ab-46de-90bb-64edb8520c5a",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cdg-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f22a113b-766e-4f07-8ad0-cc1c92ebf214",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "cdg-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"phoneNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fadc19e4-2fa0-4106-97a2-751faa952904",
+          "name": "USA waitlist / signup",
+          "request": {
+            "name": "USA waitlist / signup",
+            "description": {
+              "content": "Sign up for the Tano USA program waitlist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "usa-signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"gifted_or_allowlisted\": \"<string>\",\n  \"already_working_with_influencers\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "db76e01c-215a-4d19-a870-65000fedaa1f",
+              "name": "Signup recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "usa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"gifted_or_allowlisted\": \"<string>\",\n  \"already_working_with_influencers\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\",\n  \"recordId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a17303b-2421-419c-a3f8-2d0ad805f180",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "usa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"gifted_or_allowlisted\": \"<string>\",\n  \"already_working_with_influencers\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e70b7b5-e599-4339-bd0c-346a1ae9a677",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "usa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"gifted_or_allowlisted\": \"<string>\",\n  \"already_working_with_influencers\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ef5d13c-7b98-4e8e-bedd-23fe60c7e51a",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "usa-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"gifted_or_allowlisted\": \"<string>\",\n  \"already_working_with_influencers\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://fFYdpBtQkTAqsVKhMZDVLOtUEpqLpda.ozYrqU3VbFVToe3o33MdSneGVdY3egfP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tano.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1ada58cc-6780-401f-bd19-2e07a3cc9efd",
+    "name": "Tano Public Brand Signups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).\n\nThis OpenAPI document describes the public-facing HTTP endpoints available on https://tano.ai. These endpoints are unauthenticated form-submission endpoints intended for marketing site signups, contact requests, content-gate signups (e.g., playbook downloads), creator onboarding, and webinar registrations.\n\nThere is no authenticated/programmatic API for managing live creator campaigns — campaign management is delivered as a managed service via a dedicated account manager. To build a campaign integration, contact team@tano.ai or book a call at https://tano.ai.\n\nAll endpoints accept and return JSON, and CORS is enabled for browser-based and agent-driven submissions.\n\nContact Support:\n Name: Tano\n Email: team@tano.ai",
+      "type": "text/plain"
+    }
+  }
+}

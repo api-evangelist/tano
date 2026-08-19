@@ -1,0 +1,257 @@
+{
+  "item": [
+    {
+      "id": "6ac4a24b-53d3-4c1e-be03-ef866c293ba2",
+      "name": "Events",
+      "description": {
+        "content": "Webinar and event registrations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75fc7f84-7ca1-4588-b9e5-59cc54e6f4fb",
+          "name": "Register for the Runna webinar",
+          "request": {
+            "name": "Register for the Runna webinar",
+            "description": {
+              "content": "Register for a Tano-hosted webinar. Requires a work email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "runna-webinar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"<string>\",\n  \"workEmail\": \"<email>\",\n  \"questions\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6f8c1df7-a6f1-4be4-be5c-9a29ca426add",
+              "name": "Webinar registration recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "runna-webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"<string>\",\n  \"workEmail\": \"<email>\",\n  \"questions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\",\n  \"recordId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e122250-ff3f-4239-9164-2675d0955c19",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "runna-webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"<string>\",\n  \"workEmail\": \"<email>\",\n  \"questions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"http://ZAtFoQN.ndtsFV4T.FuGXsLe7ixw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5df5a13b-9c8c-446e-a3f9-9d0b0844962f",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "runna-webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"<string>\",\n  \"workEmail\": \"<email>\",\n  \"questions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"http://ZAtFoQN.ndtsFV4T.FuGXsLe7ixw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8efb8be6-7a8d-48bc-9eb5-fb8ff17a28bd",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "runna-webinar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fullName\": \"<string>\",\n  \"workEmail\": \"<email>\",\n  \"questions\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"http://ZAtFoQN.ndtsFV4T.FuGXsLe7ixw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tano.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "af81cb6c-f716-4d52-9569-79c32ccd6bed",
+    "name": "Tano Public Brand Signups Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).\n\nThis OpenAPI document describes the public-facing HTTP endpoints available on https://tano.ai. These endpoints are unauthenticated form-submission endpoints intended for marketing site signups, contact requests, content-gate signups (e.g., playbook downloads), creator onboarding, and webinar registrations.\n\nThere is no authenticated/programmatic API for managing live creator campaigns — campaign management is delivered as a managed service via a dedicated account manager. To build a campaign integration, contact team@tano.ai or book a call at https://tano.ai.\n\nAll endpoints accept and return JSON, and CORS is enabled for browser-based and agent-driven submissions.\n\nContact Support:\n Name: Tano\n Email: team@tano.ai",
+      "type": "text/plain"
+    }
+  }
+}

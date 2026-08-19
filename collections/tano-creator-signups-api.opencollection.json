@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tano Public Brand Signups Creator Signups API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Creator Signups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creator signup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/creator-signup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a creator signup with social handles. Used by content creators who want to be considered for partnership ad campaigns."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

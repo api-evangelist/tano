@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tano Public Brand Signups Contact API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit a contact request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/contact",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a contact request to start a conversation with Tano about creator partnership ads, gifting, affiliate management, or general enquiries. Used by AI agents and humans to introduce a brand and request a follow-up."
+        },
+        {
+          "info": {
+            "name": "Update an existing contact (or create if missing)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://tano.ai/api/contact-update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert contact details by email. Used by the pricing calculator and onboarding flows to enrich a contact record with budget, plan, and influencer-program metadata."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tano Public Brand Signups Discovery API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Product overview for LLMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/llms.txt"
+          },
+          "docs": "Plain-text product summary, services, pricing, proof points, and key links — formatted for consumption by LLMs and AI agents."
+        },
+        {
+          "info": {
+            "name": "Full product documentation for LLMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/llms-full.txt"
+          },
+          "docs": "Comprehensive plain-text documentation including pricing, services, how-it-works, playbooks, and contact info."
+        },
+        {
+          "info": {
+            "name": "Pricing details (Markdown)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/pricing.md"
+          },
+          "docs": "Detailed pricing tables for Creator Partnership Ads, Product Gifting, and Affiliate Programme Management."
+        },
+        {
+          "info": {
+            "name": "A2A agent card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/.well-known/agent-card.json"
+          },
+          "docs": "A2A agent card"
+        },
+        {
+          "info": {
+            "name": "Agent skills with when-to-use guidance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/.well-known/agent-skills/index.json"
+          },
+          "docs": "Agent skills with when-to-use guidance"
+        },
+        {
+          "info": {
+            "name": "MCP manifest",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/.well-known/mcp/manifest.json"
+          },
+          "docs": "MCP manifest"
+        },
+        {
+          "info": {
+            "name": "Agent integration & authentication guide",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/agents.md"
+          },
+          "docs": "Step-by-step guide for AI agents on how to discover, authenticate (where applicable), and call Tano endpoints."
+        },
+        {
+          "info": {
+            "name": "Tano MCP server (Streamable HTTP) descriptor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://tano.ai/api/mcp"
+          },
+          "docs": "Returns a small JSON descriptor for the Tano MCP server (transport, supported protocol versions, and serverInfo). Use POST with a JSON-RPC 2.0 envelope to start an MCP session."
+        },
+        {
+          "info": {
+            "name": "Tano MCP server (Streamable HTTP) JSON-RPC endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/mcp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Model Context Protocol server using Streamable HTTP transport. Accepts JSON-RPC 2.0 requests for `initialize`, `tools/list`, `tools/call`, `resources/list`, `resources/read`, `prompts/list`, and `ping`. No authentication required."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

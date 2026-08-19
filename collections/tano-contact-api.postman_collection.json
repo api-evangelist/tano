@@ -1,0 +1,482 @@
+{
+  "item": [
+    {
+      "id": "e905e144-e3b8-4282-b75c-dc46c1bd2c06",
+      "name": "Contact",
+      "description": {
+        "content": "Contact form submissions and updates.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62e721d7-d4d8-4d44-9d53-e58879fb7ce0",
+          "name": "Submit a contact request",
+          "request": {
+            "name": "Submit a contact request",
+            "description": {
+              "content": "Submit a contact request to start a conversation with Tano about creator partnership ads, gifting, affiliate management, or general enquiries. Used by AI agents and humans to introduce a brand and request a follow-up.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "contact"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"userType\": \"<string>\",\n  \"message\": \"<string>\",\n  \"affiliatesPerMonth\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5346f4fb-5dce-44ef-b7d9-ce1da8f2baa5",
+              "name": "Contact recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@brand.com\",\n  \"userType\": \"brand\",\n  \"message\": \"Interested in running a 50-creator TikTok campaign next quarter.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\",\n  \"recordId\": \"string\",\n  \"isWorkEmail\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab9fce56-d17c-4775-a2bf-28d9535a5eed",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@brand.com\",\n  \"userType\": \"brand\",\n  \"message\": \"Interested in running a 50-creator TikTok campaign next quarter.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://BvMGqqSetR.tnicWGux-QDfX.hLmqRZfqJi7T\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16d2c3bd-5df4-4471-a61c-af22b78870ad",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@brand.com\",\n  \"userType\": \"brand\",\n  \"message\": \"Interested in running a 50-creator TikTok campaign next quarter.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://BvMGqqSetR.tnicWGux-QDfX.hLmqRZfqJi7T\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71b784ad-c16e-44ba-8e24-c9271cceac7b",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@brand.com\",\n  \"userType\": \"brand\",\n  \"message\": \"Interested in running a 50-creator TikTok campaign next quarter.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://BvMGqqSetR.tnicWGux-QDfX.hLmqRZfqJi7T\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "799e6047-dde2-4980-ac76-f6a6b5a6d687",
+          "name": "Update an existing contact (or create if missing)",
+          "request": {
+            "name": "Update an existing contact (or create if missing)",
+            "description": {
+              "content": "Upsert contact details by email. Used by the pricing calculator and onboarding flows to enrich a contact record with budget, plan, and influencer-program metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "contact-update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"message\": \"<string>\",\n  \"usingInfluencers\": \"<boolean>\",\n  \"influencersPerMonth\": \"<integer>\",\n  \"monthlyBudget\": \"<string>\",\n  \"planOnUsingInfluencers\": \"<boolean>\",\n  \"pricingTier\": \"<string>\",\n  \"sourcePage\": \"<string>\",\n  \"calculatorSummary\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80e15937-6989-4419-af98-5007b6e32066",
+              "name": "Contact updated or created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact-update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"message\": \"<string>\",\n  \"usingInfluencers\": \"<boolean>\",\n  \"influencersPerMonth\": \"<integer>\",\n  \"monthlyBudget\": \"<string>\",\n  \"planOnUsingInfluencers\": \"<boolean>\",\n  \"pricingTier\": \"<string>\",\n  \"sourcePage\": \"<string>\",\n  \"calculatorSummary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\",\n  \"recordId\": \"string\",\n  \"updated\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9336abb3-25ca-4b23-a4df-32c78a8cd4cc",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact-update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"message\": \"<string>\",\n  \"usingInfluencers\": \"<boolean>\",\n  \"influencersPerMonth\": \"<integer>\",\n  \"monthlyBudget\": \"<string>\",\n  \"planOnUsingInfluencers\": \"<boolean>\",\n  \"pricingTier\": \"<string>\",\n  \"sourcePage\": \"<string>\",\n  \"calculatorSummary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://BvMGqqSetR.tnicWGux-QDfX.hLmqRZfqJi7T\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45ed51f4-fdac-46c9-b457-60bfe0c39e6d",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact-update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"message\": \"<string>\",\n  \"usingInfluencers\": \"<boolean>\",\n  \"influencersPerMonth\": \"<integer>\",\n  \"monthlyBudget\": \"<string>\",\n  \"planOnUsingInfluencers\": \"<boolean>\",\n  \"pricingTier\": \"<string>\",\n  \"sourcePage\": \"<string>\",\n  \"calculatorSummary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://BvMGqqSetR.tnicWGux-QDfX.hLmqRZfqJi7T\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44a69120-6c56-4835-9f7d-37fc29e14029",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact-update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"message\": \"<string>\",\n  \"usingInfluencers\": \"<boolean>\",\n  \"influencersPerMonth\": \"<integer>\",\n  \"monthlyBudget\": \"<string>\",\n  \"planOnUsingInfluencers\": \"<boolean>\",\n  \"pricingTier\": \"<string>\",\n  \"sourcePage\": \"<string>\",\n  \"calculatorSummary\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"https://BvMGqqSetR.tnicWGux-QDfX.hLmqRZfqJi7T\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tano.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "786fa7ee-1d7e-449e-92bd-02edb84b36f1",
+    "name": "Tano Public Brand Signups Contact API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).\n\nThis OpenAPI document describes the public-facing HTTP endpoints available on https://tano.ai. These endpoints are unauthenticated form-submission endpoints intended for marketing site signups, contact requests, content-gate signups (e.g., playbook downloads), creator onboarding, and webinar registrations.\n\nThere is no authenticated/programmatic API for managing live creator campaigns — campaign management is delivered as a managed service via a dedicated account manager. To build a campaign integration, contact team@tano.ai or book a call at https://tano.ai.\n\nAll endpoints accept and return JSON, and CORS is enabled for browser-based and agent-driven submissions.\n\nContact Support:\n Name: Tano\n Email: team@tano.ai",
+      "type": "text/plain"
+    }
+  }
+}

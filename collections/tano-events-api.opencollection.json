@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tano Public Brand Signups Events API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register for the Runna webinar",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/runna-webinar",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register for a Tano-hosted webinar. Requires a work email."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

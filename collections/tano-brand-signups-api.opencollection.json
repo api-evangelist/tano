@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tano Public Brand Signups API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Brand Signups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sign up for Creator Partnership Ads (CPA)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/cpa-signup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register interest in Tano's Creator Partnership Ads service. Requires a work (non-personal) email."
+        },
+        {
+          "info": {
+            "name": "Sign up for the Content Analysis Framework (CAF)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/caf-signup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register interest in / download Tano's Content Analysis Framework. Requires a work (non-personal) email."
+        },
+        {
+          "info": {
+            "name": "Sign up for the Creator Discovery Guide (CDG)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/cdg-signup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register interest in / download Tano's Creator Discovery Guide. Requires a work (non-personal) email."
+        },
+        {
+          "info": {
+            "name": "USA waitlist / signup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://tano.ai/api/usa-signup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sign up for the Tano USA program waitlist."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

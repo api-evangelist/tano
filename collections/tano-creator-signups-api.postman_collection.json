@@ -1,0 +1,257 @@
+{
+  "item": [
+    {
+      "id": "d22aea48-d970-437d-9f5e-bb84afcfee4b",
+      "name": "Creator Signups",
+      "description": {
+        "content": "Creator-side signups.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "abc72227-2fc7-413d-8dbb-02f8f62ab8f7",
+          "name": "Creator signup",
+          "request": {
+            "name": "Creator signup",
+            "description": {
+              "content": "Submit a creator signup with social handles. Used by content creators who want to be considered for partnership ad campaigns.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "creator-signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"instagram\": \"<string>\",\n  \"tiktok\": \"<string>\",\n  \"youtube\": \"<string>\",\n  \"x\": \"<string>\",\n  \"whatsappNumber\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "baa27158-fe05-4152-b37f-ab46708a0e0b",
+              "name": "Creator signup recorded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "creator-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"instagram\": \"<string>\",\n  \"tiktok\": \"<string>\",\n  \"youtube\": \"<string>\",\n  \"x\": \"<string>\",\n  \"whatsappNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\",\n  \"recordId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbe5e7bc-bf65-4d01-9957-7d10f6e80245",
+              "name": "Validation error (missing required field, invalid email, or non-work email). Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "creator-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"instagram\": \"<string>\",\n  \"tiktok\": \"<string>\",\n  \"youtube\": \"<string>\",\n  \"x\": \"<string>\",\n  \"whatsappNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"http://fsyFnVjhK.iwclpWED,.e\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b365015a-40e5-47ae-9f88-c6ded31af1a1",
+              "name": "HTTP method not supported for this endpoint. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "creator-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"instagram\": \"<string>\",\n  \"tiktok\": \"<string>\",\n  \"youtube\": \"<string>\",\n  \"x\": \"<string>\",\n  \"whatsappNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"http://fsyFnVjhK.iwclpWED,.e\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "813a6bc6-1d99-4c88-8e56-3cedee1b1585",
+              "name": "Server error. Retry with exponential backoff. Returned as JSON.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "creator-signup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"instagram\": \"<string>\",\n  \"tiktok\": \"<string>\",\n  \"youtube\": \"<string>\",\n  \"x\": \"<string>\",\n  \"whatsappNumber\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": \"string\",\n  \"message\": \"string\",\n  \"documentation\": \"http://fsyFnVjhK.iwclpWED,.e\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tano.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "31ede4be-85b6-4080-a1a4-7cd45505a550",
+    "name": "Tano Public Brand Signups Creator Signups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).\n\nThis OpenAPI document describes the public-facing HTTP endpoints available on https://tano.ai. These endpoints are unauthenticated form-submission endpoints intended for marketing site signups, contact requests, content-gate signups (e.g., playbook downloads), creator onboarding, and webinar registrations.\n\nThere is no authenticated/programmatic API for managing live creator campaigns — campaign management is delivered as a managed service via a dedicated account manager. To build a campaign integration, contact team@tano.ai or book a call at https://tano.ai.\n\nAll endpoints accept and return JSON, and CORS is enabled for browser-based and agent-driven submissions.\n\nContact Support:\n Name: Tano\n Email: team@tano.ai",
+      "type": "text/plain"
+    }
+  }
+}

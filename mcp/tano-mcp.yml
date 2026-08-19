@@ -18,41 +18,50 @@ capabilities:
   apps: true
 apps_extension:
   spec: https://modelcontextprotocol.io/specification/server/apps
-  package: "@modelcontextprotocol/ext-apps"
-  note: Exposes ui:// resources and tools annotated with _meta.ui.resourceUri so agents render Tano's pricing calculator, service catalogue, contact form, and case studies inline.
+  package: '@modelcontextprotocol/ext-apps'
+  note: Exposes ui:// resources and tools annotated with _meta.ui.resourceUri so agents render Tano's
+    pricing calculator, service catalogue, contact form, and case studies inline.
 tools:
-  - name: get_pricing
-    description: Compute an estimated cost range for a Creator Partnership Ads campaign given a follower tier and creator count.
-  - name: list_services
-    description: Return the catalogue of Tano services with descriptions and pricing.
-  - name: show_pricing_calculator
-    description: Render the interactive pricing calculator inline (MCP Apps UI).
-    ui_resource: ui://tano/pricing-calculator
-  - name: show_services
-    description: Render the services catalogue as an interactive UI (MCP Apps).
-    ui_resource: ui://tano/services
-  - name: show_contact_form
-    description: Render an embeddable contact form posting to /api/contact (MCP Apps).
-    ui_resource: ui://tano/contact-form
-  - name: show_case_studies
-    description: Render an interactive case-studies browser (MCP Apps).
-    ui_resource: ui://tano/case-studies
+- name: get_pricing
+  description: Compute an estimated cost range for a Creator Partnership Ads campaign given a follower
+    tier and creator count.
+- name: list_services
+  description: Return the catalogue of Tano services with descriptions and pricing.
+- name: show_pricing_calculator
+  description: Render the interactive pricing calculator inline (MCP Apps UI).
+  ui_resource: ui://tano/pricing-calculator
+- name: show_services
+  description: Render the services catalogue as an interactive UI (MCP Apps).
+  ui_resource: ui://tano/services
+- name: show_contact_form
+  description: Render an embeddable contact form posting to /api/contact (MCP Apps).
+  ui_resource: ui://tano/contact-form
+- name: show_case_studies
+  description: Render an interactive case-studies browser (MCP Apps).
+  ui_resource: ui://tano/case-studies
 resources:
-  - uri: https://tano.ai/llms.txt
-    name: Product Overview
-  - uri: https://tano.ai/llms-full.txt
-    name: Full Documentation
-  - uri: https://tano.ai/pricing.md
-    name: Pricing
-  - uri: https://tano.ai/openapi.json
-    name: OpenAPI Specification
-  - uri: https://tano.ai/agents.md
-    name: Agent Authentication Guide
-  - uri: ui://tano/pricing-calculator
-    name: Pricing Calculator (UI)
-  - uri: ui://tano/services
-    name: Services Catalogue (UI)
-  - uri: ui://tano/contact-form
-    name: Contact Form (UI)
-  - uri: ui://tano/case-studies
-    name: Case Studies (UI)
+- uri: https://tano.ai/llms.txt
+  name: Product Overview
+- uri: https://tano.ai/llms-full.txt
+  name: Full Documentation
+- uri: https://tano.ai/pricing.md
+  name: Pricing
+- uri: https://tano.ai/openapi.json
+  name: OpenAPI Specification
+- uri: https://tano.ai/agents.md
+  name: Agent Authentication Guide
+- uri: ui://tano/pricing-calculator
+  name: Pricing Calculator (UI)
+- uri: ui://tano/services
+  name: Services Catalogue (UI)
+- uri: ui://tano/contact-form
+  name: Contact Form (UI)
+- uri: ui://tano/case-studies
+  name: Case Studies (UI)
+deployment:
+  mode: remote
+  endpoint: https://tano.ai/api/mcp
+  verified: probed
+  probe: live
+  checked: '2026-08-12'
+  source: catalog MCP census
