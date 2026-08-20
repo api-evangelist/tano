@@ -53,6 +53,8 @@ apis:
   name: Tano Events API
   description: Webinar and event registrations.
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
