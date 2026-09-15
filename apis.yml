@@ -101,3 +101,5 @@ common:
   description: Agent Card served at /.well-known/agent-card.json (flavored against A2A 1.0.0).
 - type: Website
   url: http://tano.ai
+- type: Support
+  url: https://tano.ai/contact
