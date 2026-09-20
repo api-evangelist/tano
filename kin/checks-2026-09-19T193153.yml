@@ -2,16 +2,16 @@
 kin_checks:
   slug: tano
   schema_version: 0.22.0
-  scored_at: '2026-09-18'
-  run_ts: 2026-09-18T231945
+  scored_at: '2026-09-19'
+  run_ts: 2026-09-19T193153
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.22.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 136
-    earned: 20
+    earned: 19
     partial: 10
-    missed: 80
+    missed: 81
     na: 26
   checks:
   - id: description_substantive
@@ -111,6 +111,9 @@ kin_checks:
     status: missed
   - id: postman_present
     status: missed
+  - id: support_channel
+    status: missed
+    detail: pointer liveness 0.0
   - id: blog_present
     status: missed
   - id: plans_present
