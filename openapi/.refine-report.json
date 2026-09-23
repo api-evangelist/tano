@@ -1,11 +1,7 @@
 {
   "provider": "tano",
   "sources": [
-    "tano-brand-signups-api-openapi.yml",
-    "tano-contact-api-openapi.yml",
-    "tano-creator-signups-api-openapi.yml",
-    "tano-discovery-api-openapi.yml",
-    "tano-events-api-openapi.yml"
+    "_original/tano-openapi-original.json"
   ],
   "outputs": [
     "tano-brand-signups-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tano-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tano-brand-signups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tano-contact-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tano-creator-signups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tano-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tano-events-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

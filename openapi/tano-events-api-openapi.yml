@@ -1,18 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tano Public Brand Signups Events API
+  title: Tano Public Events API
   version: 1.0.0
   summary: Public HTTP API for Tano — the AI-native influencer marketing agency.
-  description: 'Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).
-
-
-    This OpenAPI document describes the public-facing HTTP endpoints available on https://tano.ai. These endpoints are unauthenticated form-submission endpoints intended for marketing site signups, contact requests, content-gate signups (e.g., playbook downloads), creator onboarding, and webinar registrations.
-
-
-    There is no authenticated/programmatic API for managing live creator campaigns — campaign management is delivered as a managed service via a dedicated account manager. To build a campaign integration, contact team@tano.ai or book a call at https://tano.ai.
-
-
-    All endpoints accept and return JSON, and CORS is enabled for browser-based and agent-driven submissions.'
+  description: Tano is an AI-native influencer marketing agency that manages end-to-end creator partnership ad campaigns on TikTok and Instagram (creator sourcing, contracts, payments, content rights, whitelisting, and ad-ready asset delivery).
   contact:
     name: Tano
     url: https://tano.ai
@@ -56,29 +47,6 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    SignupResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
-          type: string
-    RunnaWebinarRequest:
-      type: object
-      required:
-      - fullName
-      - workEmail
-      properties:
-        fullName:
-          type: string
-        workEmail:
-          type: string
-          format: email
-          description: Work email address (personal-domain emails are rejected).
-        questions:
-          type: string
     Error:
       type: object
       description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
@@ -96,13 +64,30 @@ components:
           type: string
           format: uri
           description: Link to documentation that explains how to fix the error.
+    RunnaWebinarRequest:
+      type: object
+      required:
+      - fullName
+      - workEmail
+      properties:
+        fullName:
+          type: string
+        workEmail:
+          type: string
+          format: email
+          description: Work email address (personal-domain emails are rejected).
+        questions:
+          type: string
+    SignupResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
+          type: string
   responses:
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
       content:
@@ -111,6 +96,12 @@ components:
             $ref: '#/components/schemas/Error'
     MethodNotAllowed:
       description: HTTP method not supported for this endpoint. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
       content:
         application/json:
           schema:
