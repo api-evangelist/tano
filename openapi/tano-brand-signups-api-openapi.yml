@@ -125,31 +125,16 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    Error:
+    WorkEmailSignupRequest:
       type: object
-      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
+      required:
+      - email
       properties:
-        error:
+        email:
           type: string
-          description: Short error code or message.
-        code:
-          type: string
-          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
-        message:
-          type: string
-          description: Human-readable error message with resolution hints.
-        documentation:
-          type: string
-          format: uri
-          description: Link to documentation that explains how to fix the error.
-    SignupResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
+          format: email
+          description: Work email address. Personal-domain emails (gmail.com, yahoo.com, etc.) are rejected.
+        phoneNumber:
           type: string
     UsaSignupRequest:
       type: object
@@ -167,17 +152,32 @@ components:
         already_working_with_influencers:
           type: boolean
           description: Whether the brand is already running influencer programs.
-    WorkEmailSignupRequest:
+    SignupResponse:
       type: object
-      required:
-      - email
       properties:
-        email:
+        success:
+          type: boolean
+        message:
           type: string
-          format: email
-          description: Work email address. Personal-domain emails (gmail.com, yahoo.com, etc.) are rejected.
-        phoneNumber:
+        recordId:
           type: string
+    Error:
+      type: object
+      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
+      properties:
+        error:
+          type: string
+          description: Short error code or message.
+        code:
+          type: string
+          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
+        message:
+          type: string
+          description: Human-readable error message with resolution hints.
+        documentation:
+          type: string
+          format: uri
+          description: Link to documentation that explains how to fix the error.
   responses:
     BadRequest:
       description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
@@ -185,14 +185,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
       content:
         application/json:
           schema:

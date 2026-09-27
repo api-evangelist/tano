@@ -81,23 +81,17 @@ paths:
           $ref: '#/components/responses/ServerError'
 components:
   schemas:
-    Error:
+    ContactUpdateResponse:
       type: object
-      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
       properties:
-        error:
-          type: string
-          description: Short error code or message.
-        code:
-          type: string
-          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
+        success:
+          type: boolean
         message:
           type: string
-          description: Human-readable error message with resolution hints.
-        documentation:
+        recordId:
           type: string
-          format: uri
-          description: Link to documentation that explains how to fix the error.
+        updated:
+          type: boolean
     ContactRequest:
       type: object
       required:
@@ -119,7 +113,7 @@ components:
           type: string
         affiliatesPerMonth:
           type: string
-    ContactUpdateResponse:
+    ContactResponse:
       type: object
       properties:
         success:
@@ -128,7 +122,7 @@ components:
           type: string
         recordId:
           type: string
-        updated:
+        isWorkEmail:
           type: boolean
     ContactUpdateRequest:
       type: object
@@ -165,17 +159,23 @@ components:
           type: string
         calculatorSummary:
           type: string
-    ContactResponse:
+    Error:
       type: object
+      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
       properties:
-        success:
-          type: boolean
+        error:
+          type: string
+          description: Short error code or message.
+        code:
+          type: string
+          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
         message:
           type: string
-        recordId:
+          description: Human-readable error message with resolution hints.
+        documentation:
           type: string
-        isWorkEmail:
-          type: boolean
+          format: uri
+          description: Link to documentation that explains how to fix the error.
   responses:
     BadRequest:
       description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
@@ -183,14 +183,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
       content:
         application/json:
           schema:
