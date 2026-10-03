@@ -80,50 +80,26 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
+  responses:
+    BadRequest:
+      description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    ContactUpdateResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
-          type: string
-        updated:
-          type: boolean
-    ContactRequest:
-      type: object
-      required:
-      - email
-      properties:
-        name:
-          type: string
-          description: Full name of the person submitting the form.
-        email:
-          type: string
-          format: email
-          description: Email address. Required.
-        phoneNumber:
-          type: string
-        userType:
-          type: string
-          description: Type of user submitting the form (e.g., brand, creator, agency).
-        message:
-          type: string
-        affiliatesPerMonth:
-          type: string
-    ContactResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
-          type: string
-        isWorkEmail:
-          type: boolean
     ContactUpdateRequest:
       type: object
       required:
@@ -159,6 +135,49 @@ components:
           type: string
         calculatorSummary:
           type: string
+    ContactResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
+          type: string
+        isWorkEmail:
+          type: boolean
+    ContactRequest:
+      type: object
+      required:
+      - email
+      properties:
+        name:
+          type: string
+          description: Full name of the person submitting the form.
+        email:
+          type: string
+          format: email
+          description: Email address. Required.
+        phoneNumber:
+          type: string
+        userType:
+          type: string
+          description: Type of user submitting the form (e.g., brand, creator, agency).
+        message:
+          type: string
+        affiliatesPerMonth:
+          type: string
+    ContactUpdateResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
+          type: string
+        updated:
+          type: boolean
     Error:
       type: object
       description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
@@ -176,25 +195,6 @@ components:
           type: string
           format: uri
           description: Link to documentation that explains how to fix the error.
-  responses:
-    BadRequest:
-      description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
 externalDocs:
   description: Tano product documentation for AI agents (llms-full.txt)
   url: https://tano.ai/llms-full.txt

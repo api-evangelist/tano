@@ -124,17 +124,34 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
+  responses:
+    BadRequest:
+      description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    WorkEmailSignupRequest:
+    SignupResponse:
       type: object
-      required:
-      - email
       properties:
-        email:
+        success:
+          type: boolean
+        message:
           type: string
-          format: email
-          description: Work email address. Personal-domain emails (gmail.com, yahoo.com, etc.) are rejected.
-        phoneNumber:
+        recordId:
           type: string
     UsaSignupRequest:
       type: object
@@ -152,14 +169,16 @@ components:
         already_working_with_influencers:
           type: boolean
           description: Whether the brand is already running influencer programs.
-    SignupResponse:
+    WorkEmailSignupRequest:
       type: object
+      required:
+      - email
       properties:
-        success:
-          type: boolean
-        message:
+        email:
           type: string
-        recordId:
+          format: email
+          description: Work email address. Personal-domain emails (gmail.com, yahoo.com, etc.) are rejected.
+        phoneNumber:
           type: string
     Error:
       type: object
@@ -178,25 +197,6 @@ components:
           type: string
           format: uri
           description: Link to documentation that explains how to fix the error.
-  responses:
-    BadRequest:
-      description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
 externalDocs:
   description: Tano product documentation for AI agents (llms-full.txt)
   url: https://tano.ai/llms-full.txt

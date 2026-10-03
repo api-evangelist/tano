@@ -53,14 +53,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
       content:
         application/json:
           schema:
@@ -75,23 +75,6 @@ components:
           type: string
         recordId:
           type: string
-    Error:
-      type: object
-      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
-      properties:
-        error:
-          type: string
-          description: Short error code or message.
-        code:
-          type: string
-          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
-        message:
-          type: string
-          description: Human-readable error message with resolution hints.
-        documentation:
-          type: string
-          format: uri
-          description: Link to documentation that explains how to fix the error.
     CreatorSignupRequest:
       type: object
       required:
@@ -116,6 +99,23 @@ components:
           description: X (Twitter) handle or URL.
         whatsappNumber:
           type: string
+    Error:
+      type: object
+      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
+      properties:
+        error:
+          type: string
+          description: Short error code or message.
+        code:
+          type: string
+          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
+        message:
+          type: string
+          description: Human-readable error message with resolution hints.
+        documentation:
+          type: string
+          format: uri
+          description: Link to documentation that explains how to fix the error.
 externalDocs:
   description: Tano product documentation for AI agents (llms-full.txt)
   url: https://tano.ai/llms-full.txt
