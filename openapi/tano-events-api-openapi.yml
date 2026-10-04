@@ -53,28 +53,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     ServerError:
       description: Server error. Retry with exponential backoff. Returned as JSON.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    SignupResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
-          type: string
     RunnaWebinarRequest:
       type: object
       required:
@@ -88,6 +79,15 @@ components:
           format: email
           description: Work email address (personal-domain emails are rejected).
         questions:
+          type: string
+    SignupResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
           type: string
     Error:
       type: object

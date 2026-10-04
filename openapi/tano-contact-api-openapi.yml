@@ -87,19 +87,68 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     ServerError:
       description: Server error. Retry with exponential backoff. Returned as JSON.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    ContactResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
+          type: string
+        isWorkEmail:
+          type: boolean
+    ContactRequest:
+      type: object
+      required:
+      - email
+      properties:
+        name:
+          type: string
+          description: Full name of the person submitting the form.
+        email:
+          type: string
+          format: email
+          description: Email address. Required.
+        phoneNumber:
+          type: string
+        userType:
+          type: string
+          description: Type of user submitting the form (e.g., brand, creator, agency).
+        message:
+          type: string
+        affiliatesPerMonth:
+          type: string
+    Error:
+      type: object
+      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
+      properties:
+        error:
+          type: string
+          description: Short error code or message.
+        code:
+          type: string
+          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
+        message:
+          type: string
+          description: Human-readable error message with resolution hints.
+        documentation:
+          type: string
+          format: uri
+          description: Link to documentation that explains how to fix the error.
     ContactUpdateRequest:
       type: object
       required:
@@ -135,38 +184,6 @@ components:
           type: string
         calculatorSummary:
           type: string
-    ContactResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
-          type: string
-        isWorkEmail:
-          type: boolean
-    ContactRequest:
-      type: object
-      required:
-      - email
-      properties:
-        name:
-          type: string
-          description: Full name of the person submitting the form.
-        email:
-          type: string
-          format: email
-          description: Email address. Required.
-        phoneNumber:
-          type: string
-        userType:
-          type: string
-          description: Type of user submitting the form (e.g., brand, creator, agency).
-        message:
-          type: string
-        affiliatesPerMonth:
-          type: string
     ContactUpdateResponse:
       type: object
       properties:
@@ -178,23 +195,6 @@ components:
           type: string
         updated:
           type: boolean
-    Error:
-      type: object
-      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
-      properties:
-        error:
-          type: string
-          description: Short error code or message.
-        code:
-          type: string
-          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
-        message:
-          type: string
-          description: Human-readable error message with resolution hints.
-        documentation:
-          type: string
-          format: uri
-          description: Link to documentation that explains how to fix the error.
 externalDocs:
   description: Tano product documentation for AI agents (llms-full.txt)
   url: https://tano.ai/llms-full.txt
