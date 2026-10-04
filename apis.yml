@@ -90,6 +90,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/tano-capability-edges.yml
+  name: Tano Business Capability Map
 - type: AgentSkill
   url: skills/tano-agents.md
 - type: MCPServer
