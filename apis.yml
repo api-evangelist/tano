@@ -35,7 +35,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-10-06'
 tags:
 - Company
 - A2A
@@ -90,6 +90,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://www.tano.ai/blog/
+  type: Blog
 - type: CapabilityMap
   url: capabilities/tano-capability-edges.yml
   name: Tano Business Capability Map
