@@ -131,44 +131,19 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
     MethodNotAllowed:
       description: HTTP method not supported for this endpoint. Returned as JSON.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    UsaSignupRequest:
-      type: object
-      required:
-      - email
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        gifted_or_allowlisted:
-          type: string
-          description: Whether the brand has run gifted or allowlisted creator campaigns.
-        already_working_with_influencers:
-          type: boolean
-          description: Whether the brand is already running influencer programs.
-    SignupResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
-          type: string
     WorkEmailSignupRequest:
       type: object
       required:
@@ -197,6 +172,31 @@ components:
           type: string
           format: uri
           description: Link to documentation that explains how to fix the error.
+    UsaSignupRequest:
+      type: object
+      required:
+      - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        gifted_or_allowlisted:
+          type: string
+          description: Whether the brand has run gifted or allowlisted creator campaigns.
+        already_working_with_influencers:
+          type: boolean
+          description: Whether the brand is already running influencer programs.
+    SignupResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
+          type: string
 externalDocs:
   description: Tano product documentation for AI agents (llms-full.txt)
   url: https://tano.ai/llms-full.txt

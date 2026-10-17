@@ -80,27 +80,8 @@ paths:
         '500':
           $ref: '#/components/responses/ServerError'
 components:
-  responses:
-    BadRequest:
-      description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    ContactResponse:
+    ContactUpdateResponse:
       type: object
       properties:
         success:
@@ -109,7 +90,7 @@ components:
           type: string
         recordId:
           type: string
-        isWorkEmail:
+        updated:
           type: boolean
     ContactRequest:
       type: object
@@ -132,23 +113,6 @@ components:
           type: string
         affiliatesPerMonth:
           type: string
-    Error:
-      type: object
-      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
-      properties:
-        error:
-          type: string
-          description: Short error code or message.
-        code:
-          type: string
-          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
-        message:
-          type: string
-          description: Human-readable error message with resolution hints.
-        documentation:
-          type: string
-          format: uri
-          description: Link to documentation that explains how to fix the error.
     ContactUpdateRequest:
       type: object
       required:
@@ -184,7 +148,24 @@ components:
           type: string
         calculatorSummary:
           type: string
-    ContactUpdateResponse:
+    Error:
+      type: object
+      description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
+      properties:
+        error:
+          type: string
+          description: Short error code or message.
+        code:
+          type: string
+          description: Machine-readable error code (e.g., 'API_ENDPOINT_NOT_FOUND', 'INVALID_EMAIL').
+        message:
+          type: string
+          description: Human-readable error message with resolution hints.
+        documentation:
+          type: string
+          format: uri
+          description: Link to documentation that explains how to fix the error.
+    ContactResponse:
       type: object
       properties:
         success:
@@ -193,8 +174,27 @@ components:
           type: string
         recordId:
           type: string
-        updated:
+        isWorkEmail:
           type: boolean
+  responses:
+    BadRequest:
+      description: Validation error (missing required field, invalid email, or non-work email). Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
 externalDocs:
   description: Tano product documentation for AI agents (llms-full.txt)
   url: https://tano.ai/llms-full.txt

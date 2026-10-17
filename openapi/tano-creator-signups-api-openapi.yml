@@ -53,14 +53,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ServerError:
-      description: Server error. Retry with exponential backoff. Returned as JSON.
+    MethodNotAllowed:
+      description: HTTP method not supported for this endpoint. Returned as JSON.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    MethodNotAllowed:
-      description: HTTP method not supported for this endpoint. Returned as JSON.
+    ServerError:
+      description: Server error. Retry with exponential backoff. Returned as JSON.
       content:
         application/json:
           schema:
@@ -90,15 +90,6 @@ components:
           description: X (Twitter) handle or URL.
         whatsappNumber:
           type: string
-    SignupResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        recordId:
-          type: string
     Error:
       type: object
       description: Structured JSON error response. All Tano endpoints return JSON for errors, never HTML.
@@ -116,6 +107,15 @@ components:
           type: string
           format: uri
           description: Link to documentation that explains how to fix the error.
+    SignupResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        recordId:
+          type: string
 externalDocs:
   description: Tano product documentation for AI agents (llms-full.txt)
   url: https://tano.ai/llms-full.txt
