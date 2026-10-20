@@ -1,0 +1,100 @@
+{
+  "endpoint": "https://tano.ai/api/mcp",
+  "captured": "2026-10-20",
+  "final_url": "https://www.tano.ai/api/mcp",
+  "method": "initialize + tools/list (anonymous, no tool called; roadmap#992)",
+  "protocol_version": "2025-06-18",
+  "server_info": {
+    "name": "Tano",
+    "title": "Tano — The AI creator-led growth partner",
+    "version": "1.0.0"
+  },
+  "result": {
+    "tools": [
+      {
+        "name": "list_services",
+        "title": "List Tano services",
+        "description": "Returns the catalogue of Tano services with current names and descriptions.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      {
+        "name": "show_services",
+        "title": "Show Tano services catalogue",
+        "description": "Render Tano's services catalogue as an interactive UI (MCP Apps).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {}
+        },
+        "_meta": {
+          "openai/outputTemplate": "ui://tano/services",
+          "ui": {
+            "resourceUri": "ui://tano/services",
+            "preferredSize": {
+              "width": 720,
+              "height": 560
+            }
+          }
+        }
+      },
+      {
+        "name": "show_contact_form",
+        "title": "Show Tano contact form",
+        "description": "Render an embeddable Tano contact form (MCP Apps). Posts to https://www.tano.ai/api/contact.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "userType": {
+              "type": "string",
+              "enum": [
+                "brand",
+                "creator",
+                "agency",
+                "other"
+              ]
+            },
+            "message": {
+              "type": "string"
+            }
+          }
+        },
+        "_meta": {
+          "openai/outputTemplate": "ui://tano/contact-form",
+          "ui": {
+            "resourceUri": "ui://tano/contact-form",
+            "preferredSize": {
+              "width": 560,
+              "height": 600
+            }
+          }
+        }
+      },
+      {
+        "name": "show_case_studies",
+        "title": "Show Tano case studies",
+        "description": "Render an interactive case-studies browser (MCP Apps).",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "brand": {
+              "type": "string",
+              "description": "Optional brand to focus on."
+            }
+          }
+        },
+        "_meta": {
+          "openai/outputTemplate": "ui://tano/case-studies",
+          "ui": {
+            "resourceUri": "ui://tano/case-studies",
+            "preferredSize": {
+              "width": 720,
+              "height": 600
+            }
+          }
+        }
+      }
+    ]
+  }
+}

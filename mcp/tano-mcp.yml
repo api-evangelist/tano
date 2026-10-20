@@ -22,19 +22,13 @@ apps_extension:
   note: Exposes ui:// resources and tools annotated with _meta.ui.resourceUri so agents render Tano's
     pricing calculator, service catalogue, contact form, and case studies inline.
 tools:
-- name: get_pricing
-  description: Compute an estimated cost range for a Creator Partnership Ads campaign given a follower
-    tier and creator count.
 - name: list_services
-  description: Return the catalogue of Tano services with descriptions and pricing.
-- name: show_pricing_calculator
-  description: Render the interactive pricing calculator inline (MCP Apps UI).
-  ui_resource: ui://tano/pricing-calculator
+  description: Returns the catalogue of Tano services with current names and descriptions.
 - name: show_services
-  description: Render the services catalogue as an interactive UI (MCP Apps).
+  description: Render Tano's services catalogue as an interactive UI (MCP Apps).
   ui_resource: ui://tano/services
 - name: show_contact_form
-  description: Render an embeddable contact form posting to /api/contact (MCP Apps).
+  description: Render an embeddable Tano contact form (MCP Apps). Posts to https://www.tano.ai/api/contact.
   ui_resource: ui://tano/contact-form
 - name: show_case_studies
   description: Render an interactive case-studies browser (MCP Apps).
@@ -65,3 +59,29 @@ deployment:
   probe: live
   checked: '2026-08-12'
   source: catalog MCP census
+tools_count: 4
+tool_quality:
+  tool_count: 4
+  tokens_total: 385
+  tokens_per_tool_median: 101
+  heavy_tools: []
+  heavy_tool_count: 0
+  params_total: 3
+  params_undescribed: 2
+  params_described_pct: 33.3
+  tools_with_undescribed_params: 1
+  tools_annotated: 0
+  annotated_pct: 0.0
+  state_changing_unhinted: []
+  tools_missing_schema: 0
+  short_descriptions: 0
+  duplicate_descriptions: 0
+  duplicate_names: 0
+  nonportable_names: []
+  output_schema_count: 0
+  token_estimate: chars/3.6 of each compact tool definition
+  source: mcp/tano-mcp-tools.json
+  measured: '2026-10-20'
+  scored: false
+  note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
+    from Glimind's agent-readiness audit.
